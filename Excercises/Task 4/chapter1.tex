@@ -1,5 +1,118 @@
 \chapter{Analysing Scenario}
 
+\section{Analysis}
+
+\subsection*{Scenario 1: E-commerce Application for a Small Business}
+\begin{itemize}
+	\item \textbf{Budget}: Limited. The budget is constrained, implying cost-effective solutions are necessary.
+	\item \textbf{Delivery Times}: 4 months. There is a relatively tight deadline, requiring a quick development cycle.
+	\item \textbf{Human Resources}: One main developer and one designer. The team is small, which impacts the complexity of the project.
+	\item \textbf{Performance Expectations}: Moderate traffic but a focus on speed and efficiency. The application should be responsive and efficient in handling user interactions.
+\end{itemize}
+
+\subsection*{Scenario 2: Interactive Social Application for a Startup}
+\begin{itemize}
+	\item \textbf{Budget}: Moderated. There is a reasonable budget available, allowing for more advanced features.
+	\item \textbf{Delivery Times}: 6-8 months. The timeline is moderately flexible, allowing for a longer development cycle.
+	\item \textbf{Human Resources}: A team of three developers, a designer, and a backend programmer. The team size is moderate, enabling the development of interactive features.
+	\item \textbf{Performance Expectations}: High traffic and real-time interactions are expected. The application should handle these interactions seamlessly.
+\end{itemize}
+
+\subsection*{Scenario 3: Financial Application for a Large Enterprise}
+\begin{itemize}
+	\item \textbf{Budget}: High. There is a substantial budget allocated for the project, allowing for extensive development.
+	\item \textbf{Delivery Times}: 10-12 months. The timeline is relatively flexible, accommodating a longer development cycle.
+	\item \textbf{Human Resources}: A large team with multiple developers, designers, security specialists, and analysts. The project benefits from a well-staffed team with diverse expertise.
+	\item \textbf{Performance Expectations}: Very high traffic, and security and efficiency are paramount. The application must be both secure and efficient.
+\end{itemize}
+
+\subsection*{Scenario 4: Health and Wellness Platform for Hospitals}
+\begin{itemize}
+	\item \textbf{Budget}: Very high. The project has a significant budget, enabling extensive development and security measures.
+	\item \textbf{Delivery Times}: 12-15 months. The timeline is flexible, allowing for thorough development and testing.
+	\item \textbf{Human Resources}: A multidisciplinary team comprising mobile developers, backend developers, security specialists, UX/UI designers, and systems analysts. The project benefits from a highly specialized team.
+	\item \textbf{Performance Expectations}: Constant and high traffic due to a large number of patients. Data security and privacy are critical.
+\end{itemize}
+
+\subsection*{Scenario 5: Prototype Application for a Hackathon}
+\begin{itemize}
+	\item \textbf{Budget}: Minimal. The project has a minimal budget, emphasizing cost efficiency.
+	\item \textbf{Delivery Times}: 48-72 hours. The timeline is extremely tight, requiring rapid development.
+	\item \textbf{Human Resources}: A team of three students with mixed skills (developer, designer, and business). The team size is small and may have limited experience.
+	\item \textbf{Performance Expectations}: As it's a prototype, no real traffic is expected. The focus is on creating a functional concept within a short time-frame.
+\end{itemize}
+
+\section*{Suggested Architectures}
+
+\subsection*{Scenario 1: E-commerce Application for a Small Business}
+\begin{itemize}
+	\item \textbf{Suggested Architecture:} MVC (Model-View-Controller).
+	\item \textbf{Reasoning:}
+	\begin{itemize}
+		\item \textbf{Investigate Architectures:} Before making a decision, it's crucial to understand the differences and advantages of common architectures like MVC. MVC provides a well-known and straightforward structure.
+		\item \textbf{Consider Requirements:} Not all applications require complex or robust architectures. In this case, with limited budget and time constraints, a simpler solution like MVC is more suitable.
+		\item \textbf{Prioritize Security:} While security is always important, in this scenario, where budget and time are limited, MVC doesn't hinder the implementation of basic security measures.
+		\item \textbf{Think About Scalability:} Although MVC is not as scalable as some other architectures, it can still handle moderate growth, which aligns with the expectations for this project.
+		\item \textbf{User Experience:} A responsive and efficient user interface is vital, and MVC allows for efficient development, contributing to a good user experience.
+		\item \textbf{Consult External Sources:} When in doubt, consulting external sources or real-world examples of MVC implementations can provide valuable insights and guidance.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Scenario 2: Interactive Social Application for a Startup}
+\begin{itemize}
+	\item \textbf{Suggested Architecture:} MVVM (Model-View-ViewModel).
+	\item \textbf{Reasoning:}
+	\begin{itemize}
+		\item \textbf{Investigate Architectures:} Understanding the strengths of MVVM is essential. It enables effective data binding, making it ideal for real-time interactive applications.
+		\item \textbf{Consider Requirements:} With a reasonable budget and flexibility in delivery times, MVVM's suitability for managing complex user interactions aligns well with the project's goals.
+		\item \textbf{Prioritize Security:} MVVM's data-binding capabilities can be leveraged to implement robust security features, crucial for an interactive social app.
+		\item \textbf{Think About Scalability:} MVVM's structured approach to managing UI-related logic and data makes it adaptable to the app's expected growth in user interactions.
+		\item \textbf{User Experience:} MVVM facilitates efficient UI updates, contributing to a positive user experience in a real-time application.
+		\item \textbf{Consult External Sources:} Exploring real-world examples of MVVM implementations in interactive social apps can provide valuable insights and best practices.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Scenario 3: Financial Application for a Large Enterprise}
+\begin{itemize}
+	\item \textbf{Suggested Architecture:} Clean Architecture.
+	\item \textbf{Reasoning:}
+	\begin{itemize}
+		\item \textbf{Investigate Architectures:} Clean Architecture offers modularity and maintainability, crucial for large-scale applications like financial platforms.
+		\item \textbf{Consider Requirements:} With a substantial budget and flexible delivery times, opting for a more robust architecture like Clean Architecture aligns with the project's complexity and long-term needs.
+		\item \textbf{Prioritize Security:} Clean Architecture's clear separation of concerns and controlled data flows make it an excellent choice for implementing stringent security measures in financial applications.
+		\item \textbf{Think About Scalability:} Clean Architecture's modularity makes it easy to scale and maintain, accommodating the expected high traffic and future growth.
+		\item \textbf{User Experience:} Clean Architecture ensures maintainable code, contributing to a reliable and error-free user experience, which is crucial in financial applications.
+		\item \textbf{Consult External Sources:} Exploring real-world financial applications built on Clean Architecture can provide valuable insights into best practices and compliance.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Scenario 4: Health and Wellness Platform for Hospitals}
+\begin{itemize}
+	\item \textbf{Suggested Architecture:} Hexagonal Architecture (Ports and Adapters).
+	\item \textbf{Reasoning:}
+	\begin{itemize}
+		\item \textbf{Investigate Architectures:} Hexagonal Architecture excels in maintaining data security and adaptability.
+		\item \textbf{Consider Requirements:} With a very high budget and flexible delivery times, choosing Hexagonal Architecture aligns with the project's complexity and the need to integrate with diverse hospital systems.
+		\item \textbf{Prioritize Security:} Hexagonal Architecture's emphasis on data security and clear boundaries makes it an excellent choice for safeguarding sensitive medical information.
+		\item \textbf{Think About Scalability:} Hexagonal Architecture's adaptability and ability to integrate with various systems support the platform's constant and high traffic expectations.
+		\item \textbf{User Experience:} Hexagonal Architecture's structured approach contributes to a reliable and user-friendly experience, critical in healthcare applications.
+		\item \textbf{Consult External Sources:} Examining real-world healthcare platforms built on Hexagonal Architecture can provide valuable insights into compliance and security measures.
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Scenario 5: Prototype Application for a Hackathon}
+\begin{itemize}
+	\item \textbf{Suggested Architecture:} MVP (Model-View-Presenter).
+	\item \textbf{Reasoning:}
+	\begin{itemize}
+		\item \textbf{Investigate Architectures:} In a hackathon setting, the focus is on rapid development, and MVP offers simplicity and speed.
+		\item \textbf{Consider Requirements:} With minimal budget and a very tight timeline, MVP's straightforward structure aligns with the project's limited resources and need for quick results.
+		\item \textbf{Prioritize Security:} While security is important, the primary goal in a hackathon is to create a functional prototype, and MVP allows the team to prioritize prototype development.
+		\item \textbf{Think About Scalability:} Scalability is not a primary concern in a prototype scenario, and MVP provides a simple foundation for creating a proof of concept.
+		\item \textbf{User Experience:} MVP focuses on the core functionality and can quickly demonstrate the application's concept, essential for hackathon presentations.
+		\item \textbf{Consult External Sources:} During a hackathon, time is limited, and external sources may not be practical, but simple MVP examples can be found to guide development.
+	\end{itemize}
+\end{itemize}
 
 
 \chapter{Peer-reviewing}
