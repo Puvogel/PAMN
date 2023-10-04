@@ -1,1 +1,97 @@
 \chapter{}
+
+\section*{Opción 1}
+
+\subsection*{1.- Definición del Dominio:}
+
+El dominio de nuestra aplicación será un buscador de zonas culturales. Las principales funcionalidades son:
+\begin{itemize}
+	\item Buscador de zonas culturales
+	\item Planificador de rutas culturales
+	\item Mapa interactivo
+	\item Sistema de Feedback
+\end{itemize}
+
+\subsection*{2.- Identificación de los principales elementos de la arquitectura elegida:}
+
+Para nuestra app hemos elegido la arquitectura en 3 capas llamada MVC (Modelo, Vista y Controlador), que está conformada por la capa de presentación (front-end), la capa de la lógica de negocio (back-end) y por último la capa de almacenamiento de datos.
+
+\textbf{Modelo:} Representa el dominio de la aplicación. Es responsable de almacenar los datos y la lógica de negocios.
+
+\textbf{Vista:} Representa la interfaz de usuario de la aplicación. Es responsable de mostrar la información al usuario y de responder a las acciones del usuario.
+
+\textbf{Controlador:} Es el intermediario entre el modelo y la vista. Es responsable de recibir las solicitudes del usuario, de interactuar con el modelo y de actualizar la vista.
+
+\subsection*{3.- Diseño de la Arquitectura:}
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{figures/MVC.png}
+	\caption{Architectura MVC}
+	\label{fig:mvc}
+\end{figure}
+
+Arquitectura de tipo “Model-view-controller”
+\begin{itemize}
+	\item \textbf{View:} El front-end parte → todo el usuario va ver
+	\item \textbf{Controller:} Servicios que sirven para conectar el “view” con nuestro back-end (como base de datos, autentificación, …).
+	\item \textbf{Model:} Presenta la lógica de negocio, se encargará del manejo de datos y de su almacenamiento.
+\end{itemize}
+
+\subsection*{4.- Caso de Uso:}
+
+\textbf{Caso de Uso 1: Búsqueda de Zonas Culturales por Nombre}
+Este caso de uso implica que un usuario ingrese el nombre de una zona cultural (como un museo o una galería de arte) en un formulario de búsqueda en la interfaz de usuario y solicite resultados relacionados con ese nombre.
+
+\textbf{Capa de Presentación (Vista):}
+\begin{itemize}
+	\item El usuario ingresa el nombre de la zona cultural en un formulario de búsqueda y hace clic en "Buscar".
+	\item La interfaz de usuario envía una solicitud de búsqueda al controlador en la capa de lógica de negocio (back-end).
+\end{itemize}
+
+\textbf{Capa de Lógica de Negocio (Controlador):}
+\begin{itemize}
+	\item El controlador recibe la solicitud de búsqueda y procesa el término de búsqueda.
+	\item Utiliza la lógica de negocio para buscar en la base de datos cualquier zona cultural cuyo nombre coincida con el término de búsqueda.
+	\item Recopila los resultados de la búsqueda.
+\end{itemize}
+
+\textbf{Capa de Almacenamiento de Datos (Modelo):}
+\begin{itemize}
+	\item La capa de datos recibe la solicitud de búsqueda de la capa de lógica de negocio.
+	\item Realiza una consulta a la base de datos para buscar zonas culturales que coincidan con el término de búsqueda.
+	\item Devuelve los resultados de la consulta al controlador.
+\end{itemize}
+
+\textbf{Capa de Lógica de Negocio (Controlador):}
+\begin{itemize}
+	\item El controlador recibe los resultados de la búsqueda de la capa de datos.
+	\item Formatea los resultados en un formato adecuado para la presentación.
+	\item Envía los resultados de vuelta a la capa de presentación.
+\end{itemize}
+
+\textbf{Capa de Presentación (Vista):}
+\begin{itemize}
+	\item La interfaz de usuario muestra los resultados de la búsqueda al usuario, que incluyen el nombre de las zonas culturales encontradas y detalles adicionales.
+\end{itemize}
+
+\textbf{Caso de Uso 2: Visualización de Detalles de una Zona Cultural}
+
+\subsection*{5.- Conclusión:}
+
+El patrón MVC es un patrón de arquitectura de software que se utiliza a menudo para aplicaciones móviles. Este patrón divide la aplicación en tres componentes principales: el modelo, la vista y el controlador.
+
+Nuestro patrón elegido tiene algunas ventajas sobre las otras, aquí mencionamos algunos:
+\begin{itemize}
+	\item Separación de responsabilidades: El modelo, la vista y el controlador tienen responsabilidades claramente definidas. Esto facilita el mantenimiento y la evolución de la aplicación.
+	\item Testabilidad: Cada componente de la aplicación se puede probar de forma independiente.
+	\item Flexibilidad: El patrón MVC se puede adaptar a diferentes dominios y aplicaciones.
+\end{itemize}
+
+\textbf{Ventajas de otras arquitecturas}
+
+\begin{itemize}
+	\item \textbf{Patrón MVP:} El patrón MVP ofrece una mayor flexibilidad que el patrón MVC. El presentador se puede utilizar para separar la lógica de la aplicación de la interfaz de usuario.
+	\item \textbf{Patrón MVVM:} El patrón MVVM ofrece una mayor flexibilidad que el patrón MVC. El modelo de vista se puede utilizar para separar la lógica de la aplicación de la interfaz de usuario.
+	\item \textbf{Patrón MVVM-C:} El patrón MVVM-C ofrece una mayor flexibilidad que el patrón MVC. El controlador se puede utilizar para separar la lógica de la aplicación de la interfaz de usuario.
+\end{itemize}
+El patrón MVC es una buena opción para aplicaciones móviles que requieren una separación clara de responsabilidades. También lo hemos escogido ya que tenemos experiencia con trabajar con ese modelo y para nuestra aplicación es la más adecuada.
