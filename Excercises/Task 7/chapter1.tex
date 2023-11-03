@@ -1,0 +1,128 @@
+\chapter{}
+\subsection*{Design patterns are essential in software development, and in the realm of mobile applications, it is no exception. These patterns provide proven solutions to common problems, enabling the creation of more modular, maintainable, and scalable applications. By understanding and applying these patterns, developers can improve the quality and efficiency of their mobile applications.}
+\section{Design structure}
+\subsection*{Design a class structure for a notes application in Kotlin using the Factory Method pattern. The notes can be of text, image, and audio types}
+
+\begin{itemize}
+	\item Create an abstract class, e.g., Note, which represents the common properties and methods of all types of notes.
+	\item Create concrete classes, e.g., TextNote, ImageNote, and AudioNote, which inherit from the Note class and represent specific types of notes.
+	\item Define a NoteFactory interface or abstract class with a factory method that can create instances of different note types.
+	\item Implement concrete factories, such as TextNoteFactory, ImageNoteFactory, and AudioNoteFactory, each responsible for creating a specific type of note.
+\end{itemize}
+
+
+\section{Content}
+\subsection*{Class diagram with the structure of the design pattern applied to the notes application}
+% Look at the slides, there is a demo for the code
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[scale=1]  % Adjust the scale as needed	
+		\begin{class}[text width=4.5cm]{Note}{7,-2}
+			\attribute{title: String}
+			\attribute{content: String}
+			\operation{display(): void}
+		\end{class}
+		
+		\begin{class}[text width=3cm]{TextNote}{0,0}
+			\inherit{Note}
+		\end{class}
+		
+		\begin{class}[text width=3cm]{ImageNote}{0,-2}
+			\inherit{Note}
+		\end{class}
+		
+		\begin{class}[text width=3cm]{AudioNote}{0,-4}
+			\inherit{Note}
+		\end{class}
+		
+		\begin{interface}[text width=4.5cm]{NoteFactory}{7,-10}
+			\operation{createNote(title: String, content: String): Note}
+		\end{interface}
+		
+		\begin{class}[text width=4cm]{TextNoteFactory}{0,-8}
+			%\inherit{NoteFactory}
+			\implement{NoteFactory}
+		\end{class}
+		
+		\begin{class}[text width=4cm]{ImageNoteFactory}{0,-10}
+			%\inherit{NoteFactory}
+			\implement{NoteFactory}
+		\end{class}
+		
+		\begin{class}[text width=4cm]{AudioNoteFactory}{0,-12}
+			%\inherit{NoteFactory}
+			\implement{NoteFactory}
+		\end{class}
+		\draw[umlcd style dashed line , - <] (Note) |- node [ above , sloped ,	black ]{} (NoteFactory.north);
+	\end{tikzpicture}
+\end{figure}
+
+
+\subsection*{Code of the classes without going into implementation details. In the class presentation, you can follow the level of detail of the document validator example}
+We have an \texttt{abstract class} \textsl{Note} representing the common properties and methods of all note types.
+\begin{lstlisting}
+// Abstract class representing a Note
+abstract class Note(val title: String, val content: String) {
+	abstract fun display()
+}
+\end{lstlisting}
+
+Concrete classes \textsl{TextNote}, \textsl{ImageNote}, and \textsl{AudioNote} inherit from \textsl{Note} and represent specific note types.
+\begin{lstlisting}
+// Concrete class for Text Notes
+class TextNote(title: String, content: String) : Note(title, content) {
+	override fun display() {
+		println("Text Note: $title - $content")
+	}
+}
+
+// Concrete class for Image Notes
+class ImageNote(title: String, content: String) : Note(title, content) {
+	override fun display() {
+		println("Image Note: $title - $content")
+	}
+}
+
+// Concrete class for Audio Notes
+class AudioNote(title: String, content: String) : Note(title, content) {
+	override fun display() {
+		println("Audio Note: $title - $content")
+	}
+}
+\end{lstlisting}
+
+We define a \textsl{NoteFactory} interface with a createNote factory method to create instances of different note types.
+\begin{lstlisting}
+// NoteFactory interface with a factory method
+interface NoteFactory {
+	fun createNote(title: String, content: String): Note
+}
+\end{lstlisting}
+
+Concrete factories (\textsl{TextNoteFactory}, \textsl{ImageNoteFactory}, and \textsl{AudioNoteFactory}) implement the \textsl{NoteFactory} interface and are responsible for creating specific types of notes.
+\begin{lstlisting}
+// Concrete factory for Text Notes
+class TextNoteFactory : NoteFactory {
+	override fun createNote(title: String, content: String): Note {
+		return TextNote(title, content)
+	}
+}
+
+// Concrete factory for Image Notes
+class ImageNoteFactory : NoteFactory {
+	override fun createNote(title: String, content: String): Note {
+		return ImageNote(title, content)
+	}
+}
+
+// Concrete factory for Audio Notes
+class AudioNoteFactory : NoteFactory {
+	override fun createNote(title: String, content: String): Note {
+		return AudioNote(title, content)
+	}
+}
+\end{lstlisting}
+
+
+\subsection*{Future changes}
+As all factory methods implement the factory interface, it is very easy to add new factories for other types of notes in the future. We simply add a new factory class that implements the \textsl{NoteFactory} interface.
