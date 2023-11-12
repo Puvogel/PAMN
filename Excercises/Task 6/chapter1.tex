@@ -1,10 +1,81 @@
 \chapter{}
 
-\section{App}
-The final task is to finish a project to display bus information from a database on an app screen. We have to implement and initialize the database from a given source database and pass the data to the view model to be displayed.
-The code for the view model and everything concerning the UI is already given and predefined.
+\section{CodeLab Task: Build a flight search app}
+%The final task is to finish a project to display bus information from a database on an app screen. We have to implement and initialize the database from a given source database and pass the data to the view model to be displayed.
+%The code for the view model and everything concerning the UI is already given and predefined.
+The final task of the CodeLab unit 6 was to build a \textsl{Flight search app}. The requirements were:
+\begin{itemize}
+	\item Provide a text field for the user to enter an airport name or International Air Transport Association (IATA) airport identifier.
+	\item Query the database to provide autocomplete suggestions as the user types.
+	\item When the user chooses a suggestion, generate a list of available flights from that airport, including the IATA identifier and airport name to other airports in the database.
+	\item Let the user save favorite individual routes.
+	\item When no search query is entered, display all the user-selected favorite routes in a list.
+	\item Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database.
+\end{itemize}
+
+For the design of the screens, we use again the \textsl{Jetpack Compose} in Android Studio. Screen items such as the search bar can be simply included and arranged.
+
+To access the repopulated database, we define ou DAOs to perform the SQL queries. A part of the code can be seen in Fig. \ref{fig:SQL_DAO}.
+\begin{figure}
+	\includegraphics[width=\linewidth]{figures/SQL_Daos.png}
+	\caption{A selection of the DAOs defined for the flight search app}
+	\label{fig:SQL_DAO}
+\end{figure}
+
+To show flight results we build a \textsl{Composable} to display the data as seen in Fig. \ref{fig:composable_preview}. 
+We also include a heart-shaped icon to enable a user to save this item to the favourite list.
+\begin{figure}
+	\includegraphics[width=\linewidth]{figures/Flight_row_preview.png}
+	\caption{Preview and parts of code for a flight info item as a composable}
+	\label{fig:composable_preview}
+\end{figure}
+These favourites will be shown on the main screen (the search screen) if the there is no ongoing search. A depiction can be seen in Fig. \ref{fig:search_screen_w_fav} \ref{fig:search_screen_w_fav}.
+A depiction of the state when searching for the "\textsl{DUS}" is shown in \ref{fig:search_screen} alongside with the results of all the flight containing said airport in Fig. \ref{fig:result_screen}. The results containing the airport are accessed by tapping on the search result itself.
+\begin{figure}
+	\centering
+	\begin{subfigure}{.28\linewidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{figures/app_search_screen.png}
+		\caption{}
+		\label{fig:search_screen}
+	\end{subfigure}
+	\begin{subfigure}{.28\linewidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{figures/app_search_result_screen.png}
+		\caption{}
+		\label{fig:result_screen}
+	\end{subfigure}
+	\begin{subfigure}{.28\linewidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{figures/app_search_screen_with_favourites.png}
+		\caption{}
+		\label{fig:search_screen_w_fav}
+	\end{subfigure}
+	\caption{(a) Search screen with a search request entered, showing results for "\textsl{DUS}" Airport\\
+		(b) Results of the search query that includes "\textsl{DUS}"\\
+		(c) Search screen with favourites displayed below}
+\end{figure}
+
+Finally to save the state of the search bar, we use Android \textsl{DataStore} to memorize and retrieve the content of the search bar on start of the app. 
+We store the search string and reclaim it on start-up again. The results are then fetched from the SQLite database as per usual. 
 
 
 \section{CodeLab: A report on usability}
-Problems: Android Studio asks to update \textsl{Gradle}, but after the update process, the project breaks.
-Room is convoluted and complex. A lot has to be accepted as \textsl{given} without further explanation.
+The CodeLab tutorials walk us through the main aspects of using a SQLite database to store and retrieve data efficiently.
+In Fig. \ref{fig:SQL_queries} we see an example on how to use SQL queries to retrieve elements from the data base.
+The auto-generation features of Kotlin help facilitate the process of adding new query calls to a project. 
+The Android\textsl{Room} is used to tie everything together and use the data in the view of an app. 
+For non-relational data such as preferences, user settings and app states, the tutorial provides basic knowledge about Android \textsl{DataStore}. 
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{figures/CodeLab_SQL_queries_example.png}
+	\caption{A CodeLab example on how to use SQL queries}
+	\label{fig:SQL_queries}
+\end{figure}
+
+\subsection*{Problems}
+Android Studio asks to update \textsl{Gradle}, but after the update process, the project breaks. This leads us to believe that the tutorials are not up to date.
+Furthermore, some of the demo projects (both starter and solution code) straight up refuse to compile and work. Especially the \textsl{Bus Schedule} demo was not usable at all and needed some time to find the problem/conflict in the code.
+
+\subsection*{Personal notes}
+Android \textsl{Room} is convoluted and complex. A lot has to be accepted as \textsl{given} without further explanation. It is hard for newcomers to understand the concepts because already in the tutorials, they use exclusively optimised and high-level code structures which, while they might help learn the best practices, make it really hard to understand the concepts of the tutorial.
+It feels like the tutorial is not helping much without learning the entire \textsl{Room} documentation by heart on the side.
