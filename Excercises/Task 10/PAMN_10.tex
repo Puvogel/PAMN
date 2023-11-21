@@ -1,0 +1,94 @@
+% ------------------------------------------------------------------------------
+% Proyectos de Ingeniería y Gestión del Software
+% by Romen Adama Caetano Ramirez
+% University of Las Palmas de Gran Canaria 
+% ------------------------------------------------------------------------------
+\documentclass[11pt]{report} 
+
+\usepackage{projectreport}
+\usepackage{placeins} % Adds \Floatbarrier command to keep elements from moving beyond a certain space
+\usepackage{color} % Color texts
+\usepackage{nicematrix}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{pgf-umlcd}
+\usepackage{listings}
+
+\bibliography{references.bib} % load source file from root.tex to enable \cite auto-complete
+
+\newcommand{\name}{ 
+	Guillermo Marion López, 
+	Karl Christian Deilmann, 
+	Louka David Vanhoucke
+}
+\newcommand{\course}{Programacíon de applicacíones moviles nativas}
+\newcommand{\projecttitle}{Report 10 - First Sprint}
+\newcommand{\submissiondate}{13 of Nov - 26 of Nov}
+
+%configure listings for Kotlin
+\lstdefinelanguage{Kotlin}{
+	morekeywords={val, var, if, else, while, for, do, when, fun, class, interface, object},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]"
+}
+
+\lstset{
+	language=Kotlin,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!50!black},
+	stringstyle=\color{red},
+	numbers=left,   % Add line numbers
+	frame=single,   % Add a box around the code
+	frameround=tttt, % Make the corners of the box round
+	backgroundcolor=\color{gray!10}, % Set background color (adjust as needed)
+	showstringspaces=false % Disable symbols for whitespaces in strings
+}
+
+
+
+% ------------------------------------------------------------------------------
+% Document
+% ------------------------------------------------------------------------------
+\begin{document}
+	
+	\maketitle
+	
+	% ------------------------------------------------------------------------------
+	% Top matter
+	% ------------------------------------------------------------------------------
+	
+	\tableofcontents
+	
+	
+	% comment out if not needed
+	
+	% ------------------------------------------------------------------------------
+	% Main matter
+	% Chapters are added to the document using the \include{chapterx} command
+	% ------------------------------------------------------------------------------
+	\newpage
+	\setcounter{page}{0}
+	\pagenumbering{arabic}
+	\include{chapter1}
+
+	
+	% ------------------------------------------------------------------------------
+	% Reference list
+	% ------------------------------------------------------------------------------
+	\addcontentsline{toc}{chapter}{References}
+	\renewcommand\bibname{References}
+	\printbibliography
+	
+	% ------------------------------------------------------------------------------
+	% Appendices
+	% ------------------------------------------------------------------------------
+	 \include{appendix}
+	% \listoffigures
+	%\listoftables
+	%\lstlistoflistings
+	
+\end{document}
